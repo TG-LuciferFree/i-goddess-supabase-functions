@@ -1,0 +1,43 @@
+name: Deploy Supabase Edge Functions
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+env:
+  SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+  SUPABASE_PROJECT_ID: eavmpfjkbhkuegpubtwx
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      
+      - name: Deploy admin-api function
+        run: |
+          supabase functions deploy admin-api \
+            --project-ref ${{ env.SUPABASE_PROJECT_ID }} \
+            --no-verify
+      
+      - name: Deploy contract-sender function
+        run: |
+          supabase functions deploy contract-sender \
+            --project-ref ${{ env.SUPABASE_PROJECT_ID }} \
+            --no-verify
+      
+      - name: Verify deployment
+        run: |
+          echo "✅ Edge Functions deployed successfully"
+          echo "admin-api: https://${{ env.SUPABASE_PROJECT_ID }}.functions.supabase.co/admin-api"
+          echo "contract-sender: https://${{ env.SUPABASE_PROJECT_ID }}.functions.supabase.co/contract-sender"
