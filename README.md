@@ -28,3 +28,4 @@ supabase functions deploy contract-sender --project-ref eavmpfjkbhkuegpubtwx
 После деплоя функции будут доступны по:
 - https://eavmpfjkbhkuegpubtwx.functions.supabase.co/admin-api
 - https://eavmpfjkbhkuegpubtwx.functions.supabase.co/contract-sender
+# Updated at Thu Jun 25 09:46:51 UTC 2026
