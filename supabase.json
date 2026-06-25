@@ -1,0 +1,17 @@
+{
+  "project_id": "eavmpfjkbhkuegpubtwx",
+  "functions": {
+    "admin-api": {
+      "verify_jwt": false
+    },
+    "contract-sender": {
+      "verify_jwt": false
+    },
+    "i-am-goddess-bot": {
+      "verify_jwt": false
+    },
+    "boginia-bot": {
+      "verify_jwt": false
+    }
+  }
+}
